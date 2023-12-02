@@ -1,0 +1,25 @@
+@font-face {
+    font-family: Roboto;
+    src: url(https://fonts.googleapis.com/css?family=Roboto);
+}
+
+body {
+    margin: 0px;
+    font-family: Roboto, sans-serif;
+    background-color: #f7ce80;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+    background-color: #321f1d;
+    color: #f7ce80;
+}
+
+.books-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}

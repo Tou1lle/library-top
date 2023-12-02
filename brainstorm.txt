@@ -1,0 +1,13 @@
+##Brainstorm
+
+*Basic application functionality*
+Add books to an Array
+Display Books in the array in the browser
+Delete Books from the array, hence also from the browser display
+Read and Unread Status
+
+*Application Structure*
+Header
+Grid Container
+Grid Items will have the cards with Books info
+PoP up dialog with forms
