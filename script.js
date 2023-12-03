@@ -1,5 +1,8 @@
-// An Array for storing books (Book Objects)
+// An Array for storing books (Book Objects) and other objects/elements
 const myLibrary = [];
+let libraryContainer = document.querySelector(".books-container");
+const addBookForm = document.querySelector(".add-book-button");
+const formContainer = document.querySelector(".form-container");
 
 // Object constructor for Books
 function Book(author, title, numberOfPages, isRead) {
@@ -8,6 +11,11 @@ function Book(author, title, numberOfPages, isRead) {
     this.numberOfPages = numberOfPages;
     this.isRead = isRead;
 }
+
+//Display form when addBookButton is clicked
+addBookForm.addEventListener("click", () => {
+    formContainer.style.display = "flex";
+});
 
 // A function for adding Books to the library - myLibrary array
 function addBookToLibrary() {
@@ -23,7 +31,6 @@ function addBookToLibrary() {
 
 // A function that displays all books on the web
 function displayBooks() {
-    let libraryContainer = document.querySelector(".books-container");
 
     for (let book of myLibrary) {
         const bookCard = document.createElement("div");
@@ -54,12 +61,14 @@ const tokyoGhoul = new Book("Sui Ishida", "Tokoy Ghoul", 100, false);
 const wimpyKid = new Book("Jeff Kinney", "Diary of a Wimpy Kid", 300, true);
 const test = new Book("Jo Nesbo", "The Snowman", 400, true);
 const test2 = new Book("Jo Nesbo", "The Snowman", 400, true);
+const test3 = new Book("Jo Nesbo", "The Snowman", 400, true);
 
 myLibrary.push(snowMan);
 myLibrary.push(tokyoGhoul);
 myLibrary.push(wimpyKid);
 myLibrary.push(test);
 myLibrary.push(test2);
+myLibrary.push(test3);
 
 // firing functions
 displayBooks();
