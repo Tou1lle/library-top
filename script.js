@@ -3,6 +3,7 @@ const myLibrary = [];
 let libraryContainer = document.querySelector(".books-container");
 const addBookForm = document.querySelector(".add-book-button");
 const formContainer = document.querySelector(".form-container");
+const addBook = document.querySelector(".add-book");
 
 // Object constructor for Books
 function Book(author, title, numberOfPages, isRead) {
@@ -17,15 +18,15 @@ addBookForm.addEventListener("click", () => {
     formContainer.style.display = "flex";
 });
 
+//Prevent default form submission
+addBook.addEventListener("click", function(event) {
+    event.preventDefault();
+    formContainer.style.display = "none";
+});
+
 // A function for adding Books to the library - myLibrary array
-function addBookToLibrary() {
-    const author = prompt("The name of the author");
-    const title = prompt("The name of the Book");
-    const numberOfPages = parseInt(prompt("The number of pages"));
-    const read = Boolean(prompt("Did you read the book? (leave empty if not)"));
-
+function addBookToLibrary(author, title, numberOfPages, read) {
     const newBook = new Book(author, title, numberOfPages, read);
-
     myLibrary.push(newBook);
 }
 
