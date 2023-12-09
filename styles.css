@@ -13,6 +13,23 @@ body {
 
 main {
     flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+    background-color: #321f1d;
+    color: #f7ce80;
+}
+
+.book-form-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    flex: 1;
 }
 
 .form-container {
@@ -30,13 +47,14 @@ main {
     border: 2px solid black;
     background-color: #321f1d;
     color: white;
-    width: 80%;
-    height: 50%;
     padding: 20px 10px;
     justify-content: flex-start;
     font-size: 18px;
     font-weight: bold;
     border-radius: 20px;
+    box-shadow: 4px 5px 3px rgb(47, 47, 47);
+    width: 300px;
+    height: 500px;
 }
 
 input {
@@ -49,18 +67,6 @@ input {
     color: white;
     border-radius: 20px;
     padding: 10px;
-}
-
-h1 {
-    text-align: center;
-    margin: 0;
-    padding: 30px;
-    background-color: #321f1d;
-    color: #f7ce80;
-}
-
-.book-form-container {
-    display: flex;
 }
 
 .books-container {
