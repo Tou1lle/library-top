@@ -59,6 +59,10 @@ h1 {
     color: #f7ce80;
 }
 
+.book-form-container {
+    display: flex;
+}
+
 .books-container {
     padding: 20px;
     display: grid;
