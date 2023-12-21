@@ -1,11 +1,18 @@
 // An Array for storing books (Book Objects) and other objects/elements
 const myLibrary = [];
 let libraryContainer = document.querySelector(".books-container");
-const addBookForm = document.querySelector(".add-book-button");
+const displayBookForm = document.querySelector(".add-book-button");
 const formContainer = document.querySelector(".form-container");
 const addBook = document.querySelector(".add-book");
+const bookForm = document.querySelector("form");
 
-// Object constructor for Books
+/**
+ * Constructor for creating Books
+ * @param {String} author name of the author    
+ * @param {String} title name of the Book
+ * @param {number} numberOfPages number of pages the Book contains
+ * @param {boolean} isRead True if read
+ */
 function Book(author, title, numberOfPages, isRead) {
     this.author = author;
     this.title = title;
@@ -13,25 +20,74 @@ function Book(author, title, numberOfPages, isRead) {
     this.isRead = isRead;
 }
 
-//Display form when addBookButton is clicked
-addBookForm.addEventListener("click", () => {
-    formContainer.style.display = "flex";
-});
-
-//Prevent default form submission
-addBook.addEventListener("click", function(event) {
-    event.preventDefault();
-    formContainer.style.display = "none";
-});
-
-// A function for adding Books to the library - myLibrary array
-function addBookToLibrary(author, title, numberOfPages, read) {
-    const newBook = new Book(author, title, numberOfPages, read);
-    myLibrary.push(newBook);
+/**
+ * Add a Book to the Library (Array of Books)
+ * @param {Book} bookToAdd a book to add
+ */
+function addBookToLibrary(bookToAdd) {
+    myLibrary.push(bookToAdd);
 }
 
-// A function that displays all books on the web
+/**
+ * Display form when button is clicked
+ */
+displayBookForm.addEventListener("click", () => {
+    toggleFormVisibility();
+
+    if (formContainer.classList.contains("show-form")) {
+        displayBookForm.classList.add("showed");
+        displayBookForm.textContent = "Close Form";
+    } else {
+        displayBookForm.classList.remove("showed");
+        displayBookForm.textContent = "+";
+    }
+});
+
+/**
+ * Toggle the form atribute
+ */
+function toggleFormVisibility() {
+    formContainer.classList.toggle("show-form");
+}
+
+/**
+ * Close the form
+ */
+function closeForm() {
+    formContainer.classList.remove("show-form");
+}
+
+/**
+ * Clear the form fields
+ */
+function clearForm() {
+    bookForm.reset();
+}
+
+/**
+ * Prevent the form from sending its data to another url
+ * close and reset the form
+ */
+bookForm.addEventListener("submit", function(event) {
+    //prevent form submission
+    event.preventDefault();
+
+    //Check validity
+    if (bookForm.checkValidity()) {
+        //Add book to library
+
+        clearForm();
+        closeForm();
+    }
+});
+
+
+/**
+ * Display Books that are in the array
+ */
 function displayBooks() {
+    //clear existing content to prevent duplicit cards
+    libraryContainer.innerHTML = "";
 
     for (let book of myLibrary) {
         const bookCard = document.createElement("div");
