@@ -55,6 +55,8 @@ function toggleFormVisibility() {
  */
 function closeForm() {
     formContainer.classList.remove("show-form");
+    displayBookForm.classList.remove("showed");
+    displayBookForm.textContent = "+";
 }
 
 /**
@@ -74,10 +76,18 @@ bookForm.addEventListener("submit", function(event) {
 
     //Check validity
     if (bookForm.checkValidity()) {
-        //Add book to library
+        const author = document.querySelector("#author").value;
+        const title = document.querySelector("#title").value;
+        const pages = document.querySelector("#pages").value;
+        const read = document.querySelector("#read").value;
+
+        const book = new Book (author, title, pages, read);
+        addBookToLibrary(book);
 
         clearForm();
         closeForm();
+
+        displayBooks();
     }
 });
 
@@ -96,12 +106,23 @@ function displayBooks() {
         const author = document.createElement("p");
         const title = document.createElement("p");
         const numberOfPages = document.createElement("p");
-        const read = document.createElement("p");
+        const read = document.createElement("button");
+
+        read.classList.add("readBook");
+        title.classList.add("title");
+
+        let isTheBookRead;
+        
+        if (book.isRead) {
+            isTheBookRead = "is Read";
+        } else {
+            isTheBookRead = "not Read";
+        };
 
         author.textContent = book.author;
         title.textContent = book.title;
         numberOfPages.textContent = book.numberOfPages;
-        read.textContent = book.isRead;
+        read.textContent = isTheBookRead;
 
         bookCard.appendChild(author);
         bookCard.appendChild(title);
@@ -109,23 +130,12 @@ function displayBooks() {
         bookCard.appendChild(read);
 
         libraryContainer.appendChild(bookCard);
+
+        read.addEventListener("click", function() {
+            alert("working!");
+        });
     }
 }
-
-// Dummy Books
-const snowMan = new Book("Jo Nesbo", "The Snowman", 400, true);
-const tokyoGhoul = new Book("Sui Ishida", "Tokoy Ghoul", 100, false);
-const wimpyKid = new Book("Jeff Kinney", "Diary of a Wimpy Kid", 300, true);
-const test = new Book("Jo Nesbo", "The Snowman", 400, true);
-const test2 = new Book("Jo Nesbo", "The Snowman", 400, true);
-const test3 = new Book("Jo Nesbo", "The Snowman", 400, true);
-
-myLibrary.push(snowMan);
-myLibrary.push(tokyoGhoul);
-myLibrary.push(wimpyKid);
-myLibrary.push(test);
-myLibrary.push(test2);
-myLibrary.push(test3);
 
 // firing functions
 displayBooks();
