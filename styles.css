@@ -118,6 +118,16 @@ button.readBook {
     width: 90%;
     padding: 5px 0;
     font-size: 20px;
+    font-weight: bolder;
+    color: white;
+}
+
+button.readBook.isRead {
+    background-color: #4CAF50; /* Green */
+}
+
+button.readBook.notRead {
+    background-color: #D32F2F; /* Red */
 }
 
 .book-card > p {

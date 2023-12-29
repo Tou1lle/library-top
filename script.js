@@ -120,6 +120,8 @@ function displayBooks() {
         numberOfPages.textContent = book.numberOfPages;
         read.textContent = isTheBookRead;
 
+        read.classList.add(book.isRead ? "isRead" : "notRead");
+
         bookCard.appendChild(author);
         bookCard.appendChild(title);
         bookCard.appendChild(numberOfPages);
