@@ -69,6 +69,8 @@ function clearForm() {
 /**
  * Prevent the form from sending its data to another url
  * close and reset the form
+ * 
+ * Create a new Book
  */
 bookForm.addEventListener("submit", function(event) {
     //prevent form submission
@@ -79,9 +81,9 @@ bookForm.addEventListener("submit", function(event) {
         const author = document.querySelector("#author").value;
         const title = document.querySelector("#title").value;
         const pages = document.querySelector("#pages").value;
-        const read = document.querySelector("#read").value;
+        const read = document.querySelector("input[name='readBookName']:checked").id;
 
-        const book = new Book (author, title, pages, read);
+        const book = new Book (author, title, pages, read === "read");
         addBookToLibrary(book);
 
         clearForm();
@@ -111,13 +113,7 @@ function displayBooks() {
         read.classList.add("readBook");
         title.classList.add("title");
 
-        let isTheBookRead;
-        
-        if (book.isRead) {
-            isTheBookRead = "is Read";
-        } else {
-            isTheBookRead = "not Read";
-        };
+        let isTheBookRead = book.isRead ? "is Read" : "not Read";
 
         author.textContent = book.author;
         title.textContent = book.title;
@@ -132,7 +128,9 @@ function displayBooks() {
         libraryContainer.appendChild(bookCard);
 
         read.addEventListener("click", function() {
-            alert("working!");
+            // Toggle the read status and update the display
+            book.isRead = !book.isRead;
+            displayBooks();
         });
     }
 }
