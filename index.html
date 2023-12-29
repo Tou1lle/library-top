@@ -25,10 +25,17 @@
         
                     <label for="pages">Number of Pages</label>
                     <input type="number" name="" id="pages" required>
-        
-                    <label for="read">Have you read the Book?</label>
-                    <input type="checkbox" name="" id="read" required>
-        
+
+                    <fieldset>
+                        <legend>Have you read the Book?</legend>
+
+                        <label for="read">Yes</label>
+                        <input type="radio" name="readBook" id="read" required>
+
+                        <label for="notRead">No</label>
+                        <input type="radio" name="readBook" id="notRead">
+                    </fieldset>
+
                     <button class="add-book">Add Book</button>
                 </form>
             </div>

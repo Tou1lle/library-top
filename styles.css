@@ -61,7 +61,8 @@ h1 {
     height: 500px;
 }
 
-input {
+input,
+fieldset {
     margin-bottom: 20px;
 }
 
