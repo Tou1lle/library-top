@@ -12,12 +12,14 @@ const bookForm = document.querySelector("form");
  * @param {String} title name of the Book
  * @param {number} numberOfPages number of pages the Book contains
  * @param {boolean} isRead True if read
+ * @param {number} indexInArray The "ID" of the book 
  */
-function Book(author, title, numberOfPages, isRead) {
+function Book(author, title, numberOfPages, isRead, indexInArray) {
     this.author = author;
     this.title = title;
     this.numberOfPages = numberOfPages;
     this.isRead = isRead;
+    this.indexInArray = indexInArray;
 }
 
 /**
@@ -82,8 +84,9 @@ bookForm.addEventListener("submit", function(event) {
         const title = document.querySelector("#title").value;
         const pages = document.querySelector("#pages").value;
         const read = document.querySelector("input[name='readBookName']:checked").id;
+        const index = myLibrary.length;
 
-        const book = new Book (author, title, pages, read === "read");
+        const book = new Book (author, title, pages, read === "read", index);
         addBookToLibrary(book);
 
         clearForm();
@@ -136,6 +139,18 @@ function displayBooks() {
         read.addEventListener("click", function() {
             // Toggle the read status and update the display
             book.isRead = !book.isRead;
+            displayBooks();
+        });
+
+        removeButton.addEventListener("click", function() {
+            let index = book.indexInArray;
+
+            myLibrary.splice(index, 1);
+
+            for (let i = index; i < myLibrary.length; i++) {
+                myLibrary[i].indexInArray = i;
+            }
+
             displayBooks();
         });
     }
