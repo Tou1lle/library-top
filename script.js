@@ -109,9 +109,11 @@ function displayBooks() {
         const title = document.createElement("p");
         const numberOfPages = document.createElement("p");
         const read = document.createElement("button");
+        const removeButton = document.createElement("button");
 
         read.classList.add("readBook");
         title.classList.add("title");
+        removeButton.classList.add("remove");
 
         let isTheBookRead = book.isRead ? "is Read" : "not Read";
 
@@ -119,6 +121,7 @@ function displayBooks() {
         title.textContent = book.title;
         numberOfPages.textContent = book.numberOfPages;
         read.textContent = isTheBookRead;
+        removeButton.textContent = "Remove the Book";
 
         read.classList.add(book.isRead ? "isRead" : "notRead");
 
@@ -126,6 +129,7 @@ function displayBooks() {
         bookCard.appendChild(title);
         bookCard.appendChild(numberOfPages);
         bookCard.appendChild(read);
+        bookCard.appendChild(removeButton);
 
         libraryContainer.appendChild(bookCard);
 
