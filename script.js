@@ -121,7 +121,7 @@ function displayBooks() {
         title.textContent = book.title;
         numberOfPages.textContent = book.numberOfPages;
         read.textContent = isTheBookRead;
-        removeButton.textContent = "Remove the Book";
+        removeButton.textContent = "Remove";
 
         read.classList.add(book.isRead ? "isRead" : "notRead");
 
